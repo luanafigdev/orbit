@@ -18,14 +18,14 @@
 | **Missões** | 10 missões de exploração espacial, pesquisa, filtros e links para referências científicas |
 | **Linha do tempo** | 14 marcos da astronomia e da exploração espacial, com filtros |
 | **Minha coleção** | Favoritos locais de planetas, curiosidades e missões |
-| **Contato** | Convite discreto no rodapé de todas as páginas, com e-mail profissional clicável |
+| **Contato** | Convite discreto no rodapé de todas as páginas, com o meu e-mail profissional clicável |
 
 
 ## Tecnologias
 
-- HTML5 semântico e acessível
+- HTML5 
 - CSS moderno (grid, responsividade, transições, custom properties)
-- JavaScript moderno sem dependências de terceiros
+- JavaScript
 - Canvas 2D para a simulação orbital
 - `localStorage` para favoritos
 - Ilustrações planetárias **autorais e procedurais**, incluídas nos assets para funcionar sem conexão com serviços de imagens
@@ -64,3 +64,13 @@ Consulte [`DADOS_E_FONTES.md`](DADOS_E_FONTES.md) para links das referências.
 **luanafigueiredo.dev@gmail.com**
 
 — ORBIT, um projeto independente de front-end.
+
+## Atualização — NOCTIS
+
+- Adicionado o **NOCTIS**, observatório astronômico acessível pelo menu e pela página inicial do ORBIT.
+- Mapa celeste 2D com estrelas, constelações, seleção de localização, data, horário e controles de visualização.
+- Novas áreas: **Esta Noite**, **Atlas Celestial**, **SIDERAL** e **Eventos**.
+- O catálogo inicial reúne estrelas e objetos do espaço profundo. O SIDERAL utiliza ilustrações identificadas como artísticas; não é uma visualização 3D.
+- As posições da Lua e dos planetas dependem do carregamento da biblioteca Astronomy Engine pela internet. O mapa não representa uma transmissão ao vivo nem prevê condições meteorológicas.
+
+

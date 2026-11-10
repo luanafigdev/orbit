@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════════════════════════
    ORBIT — immersive solar-system editorial • Luana Figueiredo
    Identidade: índigo cósmico / ametista / luz de estrelas.
-   Arte planetária autoral. Sem frameworks, sem rastreamento.
+   Arte planetária autoral.
 ══════════════════════════════════════════════════════════════════ */
 :root{color-scheme:dark;--ink:#070817;--ink-2:#0c0e22;--panel:#10142d;--line:rgba(183,169,236,.19);--white:#f7f4ff;--muted:#a8abc8;--soft:#777d9e;--purple:#a584ff;--violet:#784cf2;--peach:#f7c69f;--max:1440px;--radius:20px;--serif:Georgia,'Times New Roman',serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--white);background:var(--ink);font-size:15px;-webkit-font-smoothing:antialiased;overflow-x:hidden}

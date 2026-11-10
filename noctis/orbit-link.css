@@ -1,0 +1,21 @@
+.noctis-orbit-nav {letter-spacing:.02em;color:#c9dfff}
+.noctis-orbit-mobile {display:flex;align-items:center;gap:.6rem;padding:.75rem 1rem;color:#cfe7ff;text-decoration:none;font-weight:600}
+.noctis-orbit-teaser{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:1fr .75fr;align-items:center;min-height:355px;margin-block:5rem;padding:3.8rem 4rem;border:1px solid rgba(169,195,238,.18);border-radius:26px;background:radial-gradient(ellipse at 75% 40%,#1a365a 0%,#101c32 38%,#07101f 76%);color:#edf5ff;box-shadow:0 28px 70px rgba(0,0,0,.22)}
+.noctis-teaser-content{z-index:2;max-width:670px}
+.noctis-teaser-kicker{color:#a7bad7;font-size:.73rem;font-weight:700;letter-spacing:.20em;text-transform:uppercase}
+.noctis-orbit-teaser h2{margin:16px 0 2px;color:#f6faff;font:700 clamp(3.7rem,8vw,7rem)/1 "Space Grotesk",sans-serif;letter-spacing:-.08em}
+.noctis-orbit-teaser h2 span{position:relative;top:-1.8em;margin-left:12px;color:#9ed9ff;font-size:.24em;letter-spacing:0}
+.noctis-teaser-content>p:not(.noctis-teaser-kicker){max-width:33ch;margin:10px 0 27px;color:#bccde6;font-size:clamp(1rem,1.8vw,1.28rem);line-height:1.5}
+.noctis-teaser-cta{display:inline-flex;align-items:center;gap:2rem;padding:13px 21px;border:1px solid #b0caeb;border-radius:999px;color:#f0f6ff;text-decoration:none;font-weight:700;font-size:.85rem;transition:background .2s ease,color .2s ease}
+.noctis-teaser-cta:hover{background:#e4f1ff;color:#11213a}
+.noctis-teaser-sky{position:relative;width:min(100%,330px);aspect-ratio:1;margin:auto;border:1px solid rgba(198,223,255,.3);border-radius:50%;background:radial-gradient(circle at 50% 50%,#b6d4f933 0%,transparent 40%),repeating-radial-gradient(circle at 50% 50%,transparent 0 38px,#bed3f022 39px 40px),#0a192f;box-shadow:0 0 90px #6598cc22,inset 0 0 80px #020918bb}
+.noctis-teaser-sky:before,.noctis-teaser-sky:after{content:'';position:absolute;inset:15%;border:1px solid #a9ceff66;border-radius:50%;transform:rotateX(67deg) rotate(-34deg)}
+.noctis-teaser-sky:after{inset:31%;transform:rotateY(70deg) rotate(40deg)}
+.noctis-teaser-sky span{position:absolute;width:5px;height:5px;border-radius:50%;background:#eff7ff;box-shadow:0 0 16px 2px #b8e4ff}
+.noctis-teaser-sky span:nth-child(1){top:24%;left:45%}.noctis-teaser-sky span:nth-child(2){top:59%;left:30%}.noctis-teaser-sky span:nth-child(3){top:70%;left:68%}.noctis-teaser-sky span:nth-child(4){top:35%;left:76%}
+@media(max-width:720px){.noctis-orbit-teaser{grid-template-columns:1fr;min-height:auto;margin-block:2.5rem;padding:2.3rem 1.6rem}.noctis-teaser-sky{position:absolute;right:-150px;top:10%;width:260px;opacity:.32}.noctis-orbit-teaser h2{font-size:3.75rem}.noctis-teaser-content{position:relative}}
+@media(prefers-reduced-motion:reduce){.noctis-teaser-cta{transition:none}}
+
+@media (min-width:901px) and (max-width:1170px) {
+  .desktop-nav .nav-link {padding-left:6px;padding-right:6px;font-size:10px}
+}

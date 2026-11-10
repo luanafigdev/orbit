@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070d1a">
+  <meta name="description" content="NOCTIS, o observatório sideral do ORBIT. Explore o céu, constelações, estrelas e os objetos do espaço profundo.">
+  <title>NOCTIS — Observatório sideral | ORBIT</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    try {
+      if (!sessionStorage.getItem('noctis-opening-seen') && !location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('noctis-opening');
+      }
+    } catch (error) {
+      if (!location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('noctis-opening');
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="noctis.css">
+</head>
+<body>
+  <div class="opening-scene" id="opening-scene" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Abertura do observatório NOCTIS">
+    <div class="opening-stars" id="opening-stars" aria-hidden="true"></div>
+    <div class="opening-glow" aria-hidden="true"></div>
+    <div class="opening-orbit opening-orbit-one" aria-hidden="true"></div>
+    <div class="opening-orbit opening-orbit-two" aria-hidden="true"></div>
+    <div class="opening-content">
+      <span class="opening-symbol" aria-hidden="true">✳</span>
+      <p class="opening-kicker">UMA EXPERIÊNCIA ORBIT</p>
+      <h2 class="opening-title">NOCTIS<span>.</span></h2>
+      <p class="opening-subtitle">O universo não termina onde seus olhos alcançam.</p>
+      <div class="opening-rule" aria-hidden="true"><span></span></div>
+      <p class="opening-caption">OBSERVE &nbsp;·&nbsp; DESCUBRA &nbsp;·&nbsp; EXPLORE</p>
+    </div>
+    <button class="opening-skip" id="skip-opening" type="button">Pular apresentação <span aria-hidden="true">↗</span></button>
+    <span class="opening-corner" aria-hidden="true">ORBIT / NOCTIS &nbsp; · &nbsp; 01</span>
+  </div>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+  <div class="page-glow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="../" aria-label="Voltar ao ORBIT"><span class="brand-mark"><img src="../favicon.svg" width="30" height="30" alt=""></span> ORBIT <span class="brand-separator">/</span> <strong>NOCTIS</strong></a>
+    <span class="topbar-caption">UM OBSERVATÓRIO SIDERAL</span>
+    <a class="back-link" href="../">Voltar ao ORBIT <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="intro wrapper" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <span class="eyebrow"><span class="signal-dot"></span> UMA EXPERIÊNCIA ORBIT</span>
+        <h1 id="intro-title">O universo não termina <em>onde seus olhos alcançam.</em></h1>
+        <p>Um observatório para conhecer o céu de verdade. Encontre estrelas, explore constelações e descubra o que existe além do horizonte.</p>
+        <div class="intro-actions">
+          <button type="button" class="button primary" data-goto="observatorio">Explorar o céu <span aria-hidden="true">↗</span></button>
+          <button type="button" class="button subtle" data-goto="sideral">Conhecer o SIDERAL <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+      <div class="intro-orbit" aria-hidden="true"><div class="intro-sphere"></div><div class="intro-ring"></div><span class="orbital-label a">α — 06h 45m</span><span class="orbital-label b">δ —16° 43′</span><span class="orbital-cross">✧</span></div>
+      <div class="intro-bottom"><span>OBSERVE · DESCUBRA · EXPLORE</span><button type="button" id="replay-opening" class="replay-opening">↗ REVER ABERTURA</button></div>
+    </section>
+
+    <div class="section-nav-wrap">
+      <nav class="section-nav wrapper" aria-label="Seções do observatório">
+        <button class="section-tab active" data-tab="observatorio" aria-current="page">Observatório</button>
+        <button class="section-tab" data-tab="esta-noite">Esta noite</button>
+        <button class="section-tab" data-tab="atlas">Atlas celestial</button>
+        <button class="section-tab" data-tab="sideral">SIDERAL</button>
+        <button class="section-tab" data-tab="eventos">Eventos</button>
+      </nav>
+    </div>
+
+    <div class="wrapper workspace">
+      <section class="panel-section" id="observatorio" data-section="observatorio" aria-labelledby="sky-heading">
+        <div class="section-heading"><div><span class="eyebrow">01 / OBSERVATÓRIO</span><h2 id="sky-heading">O céu, na sua perspectiva.</h2><p>Escolha um lugar e um momento. O mapa mostra o céu geométrico acima do horizonte.</p></div><span class="scientific-tag">MAPA ASTRONÔMICO · 2D</span></div>
+        <div class="sky-grid">
+          <div class="sky-panel">
+            <div class="sky-topline"><span class="live-label"><i></i> POSIÇÕES CALCULADAS</span><span id="map-caption">Azimute / altitude</span></div>
+            <div class="sky-canvas-wrap" id="sky-container">
+              <canvas id="sky-canvas" role="img" aria-label="Mapa circular do céu com estrelas e constelações calculadas para a localização e data selecionadas"></canvas>
+              <div class="canvas-tools"><button type="button" id="zoom-in" aria-label="Aproximar mapa">+</button><button type="button" id="zoom-out" aria-label="Afastar mapa">−</button><button type="button" id="reset-view" aria-label="Restaurar mapa">⟲</button></div>
+              <div class="sky-overlay-label" id="sky-overlay">ZENITE / 90°</div>
+            </div>
+            <div class="sky-bottom"><span>↔ Arraste para deslocar · Role para aproximar · Toque nas estrelas</span><span class="map-scale">HORIZONTE 0°</span></div>
+          </div>
+          <aside class="settings-panel" aria-label="Controles do mapa celeste">
+            <div class="settings-title"><span>CONFIGURAR OBSERVAÇÃO</span><span aria-hidden="true">✳</span></div>
+            <label for="sky-location">Localização</label>
+            <select id="sky-location">
+              <option value="salvador">Salvador, Brasil</option>
+              <option value="saopaulo">São Paulo, Brasil</option>
+              <option value="riodejaneiro">Rio de Janeiro, Brasil</option>
+              <option value="recife">Recife, Brasil</option>
+              <option value="brasilia">Brasília, Brasil</option>
+              <option value="portoalegre">Porto Alegre, Brasil</option>
+              <option value="lisboa">Lisboa, Portugal</option>
+              <option value="novayork">Nova York, EUA</option>
+              <option value="toquio">Tóquio, Japão</option>
+              <option value="custom">Coordenadas personalizadas (UTC)</option>
+            </select>
+            <div class="custom-fields hidden" id="custom-coordinates">
+              <div><label for="latitude">Latitude (°)</label><input id="latitude" type="number" min="-90" max="90" step="0.0001" value="-12.9777"></div>
+              <div><label for="longitude">Longitude (°)</label><input id="longitude" type="number" min="-180" max="180" step="0.0001" value="-38.5016"></div>
+            </div>
+            <button id="use-my-location" class="text-control" type="button">⌖ Usar minha localização</button>
+            <label for="sky-date">Data e hora na localização selecionada</label>
+            <input type="datetime-local" id="sky-date" step="60">
+            <p class="field-note" id="timezone-note">Fuso: America/Bahia</p>
+            <button type="button" id="now-button" class="button outline small">Usar horário atual ↺</button>
+            <div class="separator"></div>
+            <div class="settings-title"><span>CAMADAS DO MAPA</span></div>
+            <label class="toggle"><input type="checkbox" id="show-lines" checked><span>Linhas das constelações</span></label>
+            <label class="toggle"><input type="checkbox" id="show-labels" checked><span>Identificação dos astros</span></label>
+            <label class="toggle"><input type="checkbox" id="show-grid" checked><span>Grade do céu</span></label>
+            <div class="separator"></div>
+            <div class="settings-title"><span>OBJETO SELECIONADO</span></div>
+            <div id="object-info" class="object-info" aria-live="polite"><p>Selecione uma estrela ou planeta no mapa para conhecer suas coordenadas e sua posição no céu.</p></div>
+            <p id="planet-status" class="field-note">Carregando efemérides planetárias…</p>
+          </aside>
+        </div>
+        <p class="accuracy-note">O mapa usa um catálogo selecionado de estrelas com coordenadas J2000 aproximadas. Não é uma fotografia nem prevê nuvens, luminosidade da cidade ou transparência atmosférica. As posições dos planetas dependem da biblioteca Astronomy Engine.</p>
+      </section>
+
+      <section class="panel-section hidden" id="esta-noite" data-section="esta-noite" aria-labelledby="tonight-heading">
+        <div class="section-heading"><div><span class="eyebrow">02 / ESTA NOITE</span><h2 id="tonight-heading">Seu próximo encontro com o céu.</h2><p>Estrelas e planetas acima do horizonte, em uma seleção calculada para as 21h da cidade escolhida.</p></div><span class="scientific-tag" id="tonight-date"></span></div>
+        <div class="tonight-banner"><span class="eyebrow">GUIA DE OBSERVAÇÃO</span><strong id="tonight-city">Salvador</strong><span>Estas são possibilidades geométricas, não uma previsão de céu limpo. A observação depende também da meteorologia e poluição luminosa.</span></div>
+        <div class="card-grid" id="tonight-list"></div>
+      </section>
+
+      <section class="panel-section hidden" id="atlas" data-section="atlas" aria-labelledby="atlas-heading">
+        <div class="section-heading"><div><span class="eyebrow">03 / ATLAS CELESTIAL</span><h2 id="atlas-heading">Um universo para pesquisar.</h2><p>Estrelas brilhantes e objetos de céu profundo, com informações e fontes para continuar descobrindo.</p></div></div>
+        <div class="atlas-filters"><label class="search-box"><span aria-hidden="true">⌕</span><input id="atlas-search" type="search" placeholder="Pesquisar por nome ou constelação..." aria-label="Pesquisar no atlas"></label><select id="atlas-type" aria-label="Filtrar catálogo"><option value="todos">Todas as categorias</option><option value="estrela">Estrelas</option><option value="profundo">Céu profundo</option></select></div>
+        <div class="card-grid" id="atlas-list"></div>
+        <p class="accuracy-note" id="atlas-count"></p>
+      </section>
+
+      <section class="panel-section hidden" id="sideral" data-section="sideral" aria-labelledby="sideral-heading">
+        <div class="section-heading"><div><span class="eyebrow">04 / SIDERAL</span><h2 id="sideral-heading">Além do que os olhos veem.</h2><p>Uma viagem pelos objetos do espaço profundo, da vizinhança estelar às outras galáxias.</p></div><span class="scientific-tag">EXPLORAÇÃO PROFUNDA</span></div>
+        <div class="sideral-hero"><div class="sideral-hero-art" aria-hidden="true"></div><div class="sideral-hero-copy"><span class="eyebrow">UMA EXPERIÊNCIA NOCTIS</span><h3>Há muito mais entre as estrelas.</h3><p>Conheça nebulosas, aglomerados e galáxias através de dados astronômicos e representações visuais identificadas.</p></div></div>
+        <div class="deep-grid" id="sideral-list"></div>
+        <p class="accuracy-note">As artes abstratas desta galeria são ilustrativas e não representam fotografias reais, posições ou proporções físicas dos objetos. Os links levam às instituições e catálogos científicos correspondentes.</p>
+      </section>
+
+      <section class="panel-section hidden" id="eventos" data-section="eventos" aria-labelledby="events-heading">
+        <div class="section-heading"><div><span class="eyebrow">05 / CALENDÁRIO CÓSMICO</span><h2 id="events-heading">O céu também tem seus ciclos.</h2><p>Janelas anuais típicas de chuvas de meteoros e referências para acompanhar eclipses e outros fenômenos.</p></div></div>
+        <div class="events-note"><span>✦</span><p>As datas abaixo representam <strong>épocas típicas de atividade</strong>, não previsões exatas do pico de cada ano. Condições, horário do máximo e visibilidade variam. Verifique os dados atualizados nas fontes.</p></div>
+        <div class="events-list" id="events-list"></div>
+        <div class="events-links"><a href="https://science.nasa.gov/solar-system/meteors-meteorites/" target="_blank" rel="noopener noreferrer">Guia NASA sobre meteoros ↗</a><a href="https://eclipse.gsfc.nasa.gov/eclipse.html" target="_blank" rel="noopener noreferrer">Catálogo NASA de eclipses ↗</a></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer wrapper"><div><strong>NOCTIS <span>✳</span> ORBIT</strong><p>Observe com curiosidade. Explore com ciência.</p></div><div><a href="../">Voltar ao ORBIT ↗</a><a href="../alunar/">Conhecer o ALUNAR ↗</a></div><small>Projeto independente de exploração astronômica. Dados e representações indicados em cada área.</small></footer>
+
+  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"><button type="button" id="close-dialog" class="dialog-close" aria-label="Fechar janela">×</button><div id="dialog-body"></div></dialog>
+  <script src="opening.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="sky.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
