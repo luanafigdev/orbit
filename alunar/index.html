@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080c19">
+  <meta name="description" content="ALUNAR — uma experiência lunar do ORBIT. Explore a Lua em 3D, descubra as fases lunares e registre suas observações.">
+  <title>ALUNAR — A experiência lunar do ORBIT</title>
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Ir para o conteúdo</a>
+  <div class="starfield" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="/" aria-label="Voltar ao ORBIT"><span class="brand-orbit" aria-hidden="true">◎</span> ORBIT <span class="brand-divider">/</span> <span>ALUNAR</span></a>
+    <nav class="site-nav" aria-label="Navegação ALUNAR">
+      <a href="#hoje">Lua de hoje</a>
+      <a href="#explorar">Explorar</a>
+      <a href="#fases">Fases</a>
+      <a href="#historia">História</a>
+      <a href="#diario">Diário</a>
+    </nav>
+    <a class="nav-return" href="/">Voltar ao ORBIT <span aria-hidden="true">↗</span></a>
+    <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Abrir navegação" aria-controls="site-nav-mobile" aria-expanded="false">☰</button>
+  </header>
+  <nav class="mobile-nav" id="site-nav-mobile" aria-label="Navegação no celular" hidden>
+    <a href="#hoje">Lua de hoje</a><a href="#explorar">Explorar</a><a href="#fases">Fases</a><a href="#historia">História</a><a href="#diario">Diário</a><a href="/">Voltar ao ORBIT</a>
+  </nav>
+  <main id="main">
+    <section class="hero section-wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="mini-line"></span> UMA EXPERIÊNCIA LUNAR DO ORBIT</p>
+        <h1 id="hero-title">A<span class="hero-accent">LUNAR</span><span class="hero-period">.</span></h1>
+        <p class="hero-lead">A Lua mais perto de você.</p>
+        <p class="hero-description">Uma viagem entre crateras, fases, descobertas e as pequenas histórias que escrevemos olhando para o céu.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#explorar">Explorar a Lua <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-ghost" href="#hoje">Ver a Lua de hoje <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-facts" aria-label="Dados gerais da Lua">
+          <div><strong>384.400 <small>km</small></strong><span>Distância média à Terra</span></div>
+          <div><strong>29,5 <small>dias</small></strong><span>Ciclo das fases</span></div>
+          <div><strong>3.474 <small>km</small></strong><span>Diâmetro aproximado</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Representação ilustrativa da Lua">
+        <div class="hero-halo"></div>
+        <img class="hero-moon" src="./assets/hero-moon.webp" width="930" height="930" alt="Lua prateada com textura de crateras, em ilustração digital">
+        <span class="hero-orbit orbit-one" aria-hidden="true"></span>
+        <span class="hero-orbit orbit-two" aria-hidden="true"></span>
+        <button type="button" id="note-star" class="special-star" aria-label="Uma pequena estrela diferente das outras. Descobrir mensagem pessoal" title="Uma estrela diferente">✦</button>
+        <span class="hero-coordinate">SOL III / SATÉLITE 01</span>
+      </div>
+      <a class="scroll-hint" href="#hoje"><span aria-hidden="true">↓</span> DESLIZE PARA DESCOBRIR</a>
+    </section>
+
+    <section class="section-wrap content-section today-section" id="hoje" aria-labelledby="today-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / OBSERVAR</p><h2 id="today-title">A Lua <em>de hoje</em></h2></div>
+        <p>O céu muda todos os dias. Esta seção acompanha o ciclo lunar pela data do seu dispositivo.</p>
+      </div>
+      <div class="today-grid">
+        <article class="panel today-main">
+          <div class="panel-overline"><span class="live-dot"></span> CICLO LUNAR ATUAL <span id="today-date"></span></div>
+          <div class="today-display">
+            <canvas id="today-phase" width="236" height="236" role="img" aria-label="Representação ilustrativa da fase lunar atual"></canvas>
+            <div><p class="small-label">FASE ATUAL</p><h3 id="today-name">Calculando...</h3><p id="today-explanation" class="muted"></p></div>
+          </div>
+          <div class="today-stats">
+            <div><span>Iluminação</span><strong id="today-light">—</strong></div>
+            <div><span>Idade lunar</span><strong id="today-age">—</strong></div>
+            <div><span>Próxima fase principal</span><strong id="today-next">—</strong></div>
+          </div>
+          <p class="scientific-note">Valores aproximados, calculados para a data selecionada. Não substituem efemérides astronômicas de precisão.</p>
+        </article>
+        <article class="panel calendar-panel">
+          <div class="panel-top"><div><p class="small-label">CALENDÁRIO LUNAR</p><h3 id="calendar-title">—</h3></div><div class="calendar-actions"><button type="button" id="month-prev" aria-label="Mês anterior">←</button><button type="button" id="month-now" class="month-now">Hoje</button><button type="button" id="month-next" aria-label="Próximo mês">→</button></div></div>
+          <div class="weekdays" aria-hidden="true"><span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div>
+          <div class="calendar-days" id="calendar-days" role="group" aria-label="Selecione uma data para observar a Lua"></div>
+          <p id="calendar-selection" class="calendar-selection" aria-live="polite"></p>
+          <p class="scientific-note">Fases ilustradas para cada dia. Horários e visibilidade dependem da sua localização.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-wrap content-section explore-section" id="explorar" aria-labelledby="explore-title">
+      <div class="section-heading"><div><p class="eyebrow">02 / DESCOBRIR</p><h2 id="explore-title">Um mundo <em>para explorar</em></h2></div><p>Gire a Lua, aproxime a superfície e descubra lugares que fizeram parte da nossa história.</p></div>
+      <div class="explore-layout panel">
+        <div class="globe-panel">
+          <div class="globe-head"><span class="small-label">EXPLORADOR LUNAR <span class="status-dot"></span></span><span class="surface-disclaimer">RELEVO ILUSTRATIVO</span></div>
+          <div class="globe-stage" id="globe-stage">
+            <div class="globe-rings" aria-hidden="true"></div>
+            <canvas id="globe" tabindex="0" aria-label="Lua interativa. Arraste para girar, use as setas do teclado para orientar e a roda do mouse para aproximar."></canvas>
+            <div class="surface-markers" id="surface-markers"></div>
+          </div>
+          <div class="globe-bottom">
+            <p>Arraste para girar · Scroll ou +/- para zoom · Selecione um ponto</p>
+            <div class="globe-actions"><button id="globe-zoom-out" type="button" aria-label="Diminuir zoom">−</button><button id="globe-zoom-in" type="button" aria-label="Aumentar zoom">+</button><button id="globe-reset" type="button" aria-label="Reiniciar visualização">↺</button></div>
+          </div>
+        </div>
+        <aside class="feature-panel" aria-labelledby="feature-title">
+          <p class="small-label">CAMADAS DE EXPLORAÇÃO</p>
+          <div class="filter-row" role="group" aria-label="Filtrar pontos de interesse">
+            <button type="button" data-filter="all" class="active">Todos</button>
+            <button type="button" data-filter="mare">Mares</button>
+            <button type="button" data-filter="crater">Crateras</button>
+            <button type="button" data-filter="mission">Missões</button>
+          </div>
+          <div class="feature-details"><p id="feature-type" class="eyebrow">PONTO DE INTERESSE</p><div class="feature-moon-symbol" aria-hidden="true">◌</div><h3 id="feature-title">Apollo 11</h3><p id="feature-subtitle" class="feature-subtitle">Pouso tripulado · 1969</p><p id="feature-copy">Local do primeiro pouso humano na Lua.</p><p id="feature-coordinates" class="coordinates">—</p></div>
+          <div class="feature-list"><p class="small-label">LOCAIS DISPONÍVEIS</p><div id="feature-list"></div></div>
+          <p class="scientific-note">A textura é artística. Os marcadores são posicionados de forma aproximada por latitude e longitude selenográficas.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-wrap content-section phases-section" id="fases" aria-labelledby="phases-title">
+      <div class="section-heading"><div><p class="eyebrow">03 / COMPREENDER</p><h2 id="phases-title">Oito formas <em>de uma só Lua</em></h2></div><p>Uma mesma Lua, iluminada de maneiras diferentes ao longo de sua jornada ao redor da Terra.</p></div>
+      <div class="phase-controls"><span class="small-label">ORIENTAÇÃO APARENTE</span><div class="segmented" role="group" aria-label="Hemisfério de observação"><button type="button" data-hemisphere="south" class="active">Hemisfério Sul</button><button type="button" data-hemisphere="north">Hemisfério Norte</button></div></div>
+      <div class="phase-grid" id="phase-grid"></div>
+      <div class="phase-detail panel"><div class="phase-detail-moon"><canvas id="selected-phase" width="240" height="240" role="img" aria-label="Representação da fase selecionada"></canvas></div><div><p class="eyebrow">O CICLO LUNAR</p><h3 id="selected-phase-name">Lua Cheia</h3><p id="selected-phase-desc"></p><p class="scientific-note">O hemisfério altera a orientação aparente, não a fração iluminada. O aspecto exato também depende da latitude e do horário.</p></div></div>
+      <div class="quiet-easter"><button type="button" class="easter-link" id="secret-constellation" aria-label="Observar duas estrelas discretas">✧ <span>✦</span> ✧</button><span>O céu também guarda encontros.</span></div>
+    </section>
+
+    <section class="section-wrap content-section history-section" id="historia" aria-labelledby="history-title">
+      <div class="section-heading"><div><p class="eyebrow">04 / RECORDAR</p><h2 id="history-title">Histórias <em>além da Terra</em></h2></div><p>De um passado de bilhões de anos aos primeiros passos humanos e às descobertas que ainda estão por vir.</p></div>
+      <div id="timeline" class="timeline"></div>
+      <div class="lighthouse-panel panel"><span aria-hidden="true" class="lighthouse-illustration"><svg viewBox="0 0 52 70" width="48" height="64" fill="none"><path d="M15 64H40L36 28H20L15 64Z" fill="#B3A9D9" stroke="#D8CFF2" stroke-width="2"/><path d="M19 28V19H36V28M16 19L27 11L39 19" stroke="#D8CFF2" stroke-width="2" stroke-linejoin="round"/><path d="M24 11V5H31V11" stroke="#D8CFF2" stroke-width="2"/><path d="M28 46V37" stroke="#1C233D" stroke-width="6"/><path d="M13 64H43" stroke="#D8CFF2" stroke-width="3"/></svg></span><div><p class="small-label">UM PEQUENO DETALHE NO HORIZONTE</p><p>Nem todas as luzes apontam para um destino. Algumas apenas nos lembram do caminho.</p></div><button type="button" id="secret-lighthouse" class="icon-discovery" aria-label="Observar a luz distante">✧</button></div>
+    </section>
+
+    <section class="section-wrap content-section diary-section" id="diario" aria-labelledby="diary-title">
+      <div class="section-heading"><div><p class="eyebrow">05 / GUARDAR</p><h2 id="diary-title">Seu <em>diário lunar</em></h2></div><p>Há noites que merecem ser lembradas. Guarde aqui suas observações, descobertas e pequenos instantes.</p></div>
+      <div class="diary-layout">
+        <div class="diary-intro panel"><span class="tiny-constellation" aria-hidden="true">✧ · ✦ · ✧</span><h3>Um céu só seu.</h3><p>Registre o que viu, o que sentiu ou simplesmente como estava a Lua naquela noite.</p><div class="diary-count"><strong id="diary-count">0</strong><span>registros guardados</span></div><button type="button" class="btn btn-primary" id="new-entry">+ Novo registro</button><button type="button" class="paper-rabbit" id="secret-origami" aria-label="Examinar pequeno origami entre as páginas" title="Um papel dobrado"><svg viewBox="0 0 80 75" width="48" height="48" aria-hidden="true"><path d="M29 42L21 7L40 24L52 4L51 36L66 46L53 59L24 58L15 46Z" fill="#D9D4ED" stroke="#9E96C6" stroke-width="2"/><path d="M21 7L40 43L52 4M29 42L40 43L51 36M40 43L53 59M15 46L40 43L24 58" stroke="#A59CC5" stroke-width="1.7" fill="none"/><circle cx="52" cy="45" r="1.7" fill="#4F4A76"/></svg></button></div>
+        <div class="journal panel"><div class="journal-tools"><label class="search-field"><span aria-hidden="true">⌕</span><input id="journal-search" type="search" placeholder="Buscar registros..." aria-label="Buscar registros"></label><select id="journal-phase-filter" aria-label="Filtrar por fase lunar"><option value="all">Todas as fases</option></select><button type="button" class="icon-button" id="journal-export" title="Exportar registros" aria-label="Exportar registros">↧</button><button type="button" class="icon-button" id="journal-import" title="Importar registros" aria-label="Importar registros">↥</button><input type="file" id="journal-file" accept="application/json,.json" hidden></div><div id="journal-entries" class="journal-entries" aria-live="polite"></div><p class="scientific-note">Suas notas ficam apenas neste navegador. Exporte um backup se quiser guardá-las ou transferi-las para outro dispositivo.</p></div>
+      </div>
+    </section>
+
+    <section class="closing section-wrap"><div class="closing-orbit" aria-hidden="true">◯</div><p class="eyebrow">O FIM DE UMA VISITA. O COMEÇO DE OUTRA.</p><h2>A Lua, em detalhe,<br>em movimento, <em>em silêncio.</em></h2><a href="#top" class="btn btn-ghost">Voltar ao início ↑</a></section>
+  </main>
+  <footer class="site-footer section-wrap"><div class="footer-top"><a href="/" class="brand"><span class="brand-orbit">◎</span> ORBIT <span class="brand-divider">/</span> ALUNAR</a><span>Uma experiência lunar para quem não se cansa de olhar para o céu.</span></div><div class="footer-bottom"><p>Designed &amp; developed by <strong>Luana Figueiredo</strong> · <span id="year"></span></p><div class="footer-links"><a href="mailto:luanafigueiredo.dev@gmail.com">E-mail</a><a href="https://github.com/luanafigdev" target="_blank" rel="noopener noreferrer">GitHub ↗</a><button type="button" id="open-credits">Créditos e inspirações</button></div></div></footer>
+
+  <dialog id="note-modal" class="dialog note-dialog" aria-labelledby="note-title"><button class="dialog-close" type="button" data-close aria-label="Fechar">×</button><span class="note-moon" aria-hidden="true">☾</span><p class="eyebrow">UMA NOTA DE QUEM CRIOU ESTE UNIVERSO</p><h2 id="note-title">Para quem também ama a Lua.</h2><blockquote>“Algumas pessoas me chamam de Lu. Outras, de Lua. Talvez por isso eu sempre tenha sentido que existe um pedacinho de mim lá no céu.”</blockquote><p class="note-signature">— Luana Figueiredo</p></dialog>
+
+  <dialog id="secret-modal" class="dialog secret-dialog" aria-labelledby="secret-title"><button class="dialog-close" type="button" data-close aria-label="Fechar">×</button><p class="eyebrow">UMA DESCOBERTA ENTRE AS ESTRELAS</p><div id="secret-art" class="secret-art">✧</div><h2 id="secret-title"></h2><p id="secret-description"></p><div id="secret-progress" class="secret-progress"></div><div id="secret-complete" class="secret-complete" hidden><h3>Até a Lua.</h3><p>Uma pequena homenagem às histórias que nos fazem olhar para o céu de outra maneira.</p></div></dialog>
+
+  <dialog id="entry-modal" class="dialog form-dialog" aria-labelledby="entry-title"><button type="button" data-close class="dialog-close" aria-label="Fechar">×</button><p class="eyebrow">DIÁRIO LUNAR</p><h2 id="entry-title">Nova observação</h2><form id="entry-form"><input id="entry-id" name="id" type="hidden"><label>Título<input id="entry-name" name="title" maxlength="90" required placeholder="Uma noite sob a Lua..."></label><label>Data<input id="entry-date" name="date" type="date" required></label><p id="entry-phase-display" class="phase-preview">—</p><label>Como estava o céu?<select id="entry-sky" name="sky"><option>Limpo</option><option>Parcialmente nublado</option><option>Nublado</option><option>Chuvoso</option><option>Não observei o céu</option></select></label><label>Seu registro<textarea id="entry-text" name="content" rows="5" maxlength="2500" required placeholder="O que você quer guardar dessa noite?"></textarea></label><label>Etiquetas (separadas por vírgula)<input id="entry-tags" name="tags" maxlength="100" placeholder="céu, lembrança, descoberta"></label><label class="check-row"><input id="entry-fav" name="favorite" type="checkbox"> Marcar como favorito</label><div class="form-buttons"><button type="button" class="btn btn-ghost" data-close>Cancelar</button><button type="submit" class="btn btn-primary">Salvar registro</button></div></form></dialog>
+
+  <dialog id="credits-modal" class="dialog credits-dialog" aria-labelledby="credits-title"><button type="button" data-close class="dialog-close" aria-label="Fechar">×</button><p class="eyebrow">ORBIT / ALUNAR</p><h2 id="credits-title">Créditos</h2><p>Concepção, design e desenvolvimento: <strong>Luana Figueiredo</strong>.</p><p>Contato: <a href="mailto:luanafigueiredo.dev@gmail.com">luanafigueiredo.dev@gmail.com</a></p><p>GitHub: <a href="https://github.com/luanafigdev" target="_blank" rel="noopener noreferrer">github.com/luanafigdev</a></p><div class="credits-note"><strong>Uma homenagem discreta.</strong><p>Alguns detalhes escondidos nesta experiência são uma homenagem independente a <em>To the Moon</em>, de Freebird Games. ALUNAR não tem afiliação oficial com seus criadores. As artes, os textos e as interações desta seção são originais.</p></div><p class="scientific-note">A superfície lunar é uma ilustração procedural; as informações astronômicas são educativas e as fases calculadas são aproximadas.</p></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
