@@ -46,7 +46,7 @@
           <p class="noctis-teaser-kicker">UM OBSERVATÓRIO SIDERAL DO ORBIT</p>
           <h2 id="noctis-orbit-title">NOCTIS<span aria-hidden="true">✳</span></h2>
           <p>O universo não termina onde seus olhos alcançam.</p>
-          <a class="noctis-teaser-cta" href="noctis/">
+          <a class="noctis-teaser-cta" href="${destination}">
             Entrar no observatório <span aria-hidden="true">↗</span>
           </a>
         </div>

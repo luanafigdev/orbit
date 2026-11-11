@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050713">
+  <meta name="description" content="ÆON — uma experiência imersiva do ORBIT sobre o tempo do Universo, o nascimento das estrelas e a transformação do cosmos.">
+  <meta name="author" content="Luana Figueiredo">
+  <meta property="og:title" content="ÆON — O tempo transforma o Universo">
+  <meta property="og:description" content="Uma jornada cinematográfica pelas eras do cosmos. O tempo transforma o Universo. A luz conta sua história.">
+  <title>ÆON — O tempo transforma o Universo</title>
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#experience">Ir para a experiência</a>
+  <canvas id="cosmos" aria-label="Visualização artística animada da evolução cósmica" role="img"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="edge-shade" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="../" aria-label="Voltar para ORBIT"><span class="brand-mark">◎</span><strong>ORBIT</strong><span class="brand-divider">/</span><span class="brand-aeon">ÆON</span></a>
+    <span class="topbar-center">UMA EXPERIÊNCIA SOBRE O TEMPO CÓSMICO</span>
+    <div class="topbar-actions">
+      <button id="motionToggle" class="icon-text" type="button" aria-pressed="false" title="Pausar movimentos"><span aria-hidden="true">Ⅱ</span><span id="motionLabel">Pausar</span></button>
+      <button id="soundToggle" class="icon-text" type="button" aria-pressed="false" title="Ativar som ambiente"><span aria-hidden="true">♫</span><span id="soundLabel">Som</span></button>
+      <a class="back-link" href="../">Voltar ao ORBIT <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <button id="constantStar" class="constant-star" type="button" aria-label="Descobrir uma estrela discreta" title="✦">
+    <span class="constant-star-spark" aria-hidden="true">✦</span>
+  </button>
+  <button id="lateStar" class="late-star" type="button" aria-label="Descobrir a luz distante" title="Uma luz que veio de longe" hidden>
+    <span class="late-star-spark" aria-hidden="true">✦</span>
+  </button>
+
+  <main id="main">
+    <section id="intro" class="intro" aria-labelledby="introTitle">
+      <div class="intro-rail" aria-hidden="true"><span>α</span><span class="rail-line"></span><span>ω</span></div>
+      <div class="intro-content">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ORBIT APRESENTA <span class="eyebrow-spark">✦</span> UMA JORNADA CÓSMICA</div>
+        <p class="intro-prelude">Antes das estrelas. Depois do infinito.</p>
+        <h1 id="introTitle">ÆON</h1>
+        <p class="intro-tagline">O tempo leva tudo adiante.<br><em>Nem tudo deixa de existir.</em></p>
+        <p class="intro-description">Atravesse a escuridão primordial, veja a matéria encontrar novas formas e descubra as histórias que a luz carrega pelo espaço.</p>
+        <div class="intro-actions">
+          <button id="startBtn" class="primary-button" type="button">Iniciar jornada <span aria-hidden="true">↗</span></button>
+          <button id="startContemplateBtn" class="ghost-button" type="button">Modo Contemplação <span aria-hidden="true">✧</span></button>
+        </div>
+        <p class="intro-caption"><span aria-hidden="true">✦</span> UM UNIVERSO EM CONSTANTE TRANSFORMAÇÃO <span aria-hidden="true">✦</span> 06 ERAS</p>
+      </div>
+      <div class="intro-side" aria-hidden="true"><span>13,8</span><small>BILHÕES DE ANOS<br>DE HISTÓRIA CÓSMICA</small></div>
+      <div class="intro-bottom" aria-hidden="true"><span>UMA EXPERIÊNCIA INTERATIVA</span><span>ROLE O TEMPO. OBSERVE A LUZ.</span><span>∞</span></div>
+    </section>
+
+    <section id="experience" class="experience" aria-labelledby="eraTitle" hidden>
+      <div class="experience-topline">
+        <span id="eraPeriod">HÁ CERCA DE 13,8 BILHÕES DE ANOS</span>
+        <span class="chapter-indicator"><span class="live-dot" aria-hidden="true"></span> <span id="chapterNumber">CAPÍTULO 01 / 06</span></span>
+      </div>
+      <div class="experience-layout">
+        <article class="era-copy" aria-live="polite" aria-atomic="true">
+          <div class="era-kicker" id="eraKicker">01 — O DESPERTAR DO COSMOS</div>
+          <h2 id="eraTitle">A Origem</h2>
+          <p id="eraChapter" class="era-chapter">Tudo começa em transformação.</p>
+          <p id="eraLead" class="era-lead"></p>
+          <button id="detailToggle" type="button" class="subtle-link" aria-expanded="false" aria-controls="eraDetail">Entenda esta era <span aria-hidden="true">↗</span></button>
+          <div id="eraDetail" class="era-detail" hidden><p id="eraDetailText"></p><p id="eraFact"></p></div>
+        </article>
+        <aside class="instrument" aria-label="Instrumento de exploração">
+          <div class="instrument-heading"><span class="instrument-icon" aria-hidden="true">✺</span><div><span>INSTRUMENTO</span><strong id="instrumentLabel">MATÉRIA PRIMORDIAL</strong></div><span class="instrument-number" id="instrumentNumber">01</span></div>
+          <div class="instrument-metric"><strong id="instrumentMetric">≈ 380 mil anos</strong><span id="instrumentMetricLabel">até a recombinação</span></div>
+          <div id="instrumentControls" class="instrument-controls"></div>
+          <p class="instrument-footnote" id="instrumentFootnote">Representações artísticas e didáticas; não são simulações físicas em escala.</p>
+        </aside>
+      </div>
+      <div class="experience-corner" aria-hidden="true">Æ<br><span>ON</span></div>
+      <div id="eraTransitionLabel" class="transition-label" aria-hidden="true"></div>
+    </section>
+
+    <section id="contemplation" class="contemplation" aria-label="Modo Contemplação" hidden>
+      <div id="contemplationCopy" class="contemplation-copy"><span>ÆON · MODO CONTEMPLAÇÃO</span><h2>Observe o tempo <em>sem pressa</em></h2></div>
+      <div id="contemplationEraCue" class="contemplation-era-cue" aria-live="polite" aria-atomic="true"><span id="contemplateEra">A Origem</span></div>
+      <button id="leaveContemplate" type="button" class="exit-contemplate">✕ <span>Voltar à exploração</span></button>
+    </section>
+
+    <button id="dockPeek" class="dock-peek" type="button" aria-expanded="false" aria-controls="controlDock" hidden>☷ Mostrar controles</button>
+    <div id="controlDock" class="control-dock" hidden>
+      <div class="dock-top"><div><span class="dock-kicker">CRONONAVEGAÇÃO</span><strong id="dockEraLabel">A Origem</strong></div>
+        <div class="dock-actions">
+          <button id="prevEra" type="button" aria-label="Era anterior" title="Era anterior">←</button>
+          <button id="playBtn" type="button" aria-pressed="false" aria-label="Reproduzir passagem do tempo"><span id="playSymbol">▶</span></button>
+          <button id="nextEra" type="button" aria-label="Próxima era" title="Próxima era">→</button>
+          <button id="contemplateToggle" type="button" aria-label="Ativar Modo Contemplação" aria-pressed="false" title="Modo Contemplação">☾</button>
+          <button id="resetView" type="button" aria-label="Centralizar câmera" title="Centralizar câmera">⌾</button>
+          <button id="captureBtn" type="button" aria-label="Capturar instante" title="Capturar instante">▣</button>
+          <button id="fullScreenBtn" type="button" aria-label="Alternar tela cheia" title="Tela cheia">⛶</button>
+        </div>
+      </div>
+      <div class="time-range"><input id="timeRange" type="range" min="0" max="599" step="1" value="0" aria-label="Percorrer as seis eras cósmicas"><div class="time-glow" aria-hidden="true"></div></div>
+      <div id="eraMarkers" class="era-markers" aria-label="Escolher era cósmica"></div>
+      <div class="dock-footer"><span id="dockMicro">O INÍCIO DA JORNADA</span><span>ARRASTE · USE ← → · CLIQUE NAS ERAS</span></div>
+    </div>
+
+    <button id="hintBtn" type="button" class="help-button" aria-haspopup="dialog" title="Controles e fontes" aria-label="Abrir informações e fontes">?</button>
+  </main>
+
+  <div id="lateModal" class="modal-backdrop" hidden>
+    <section class="story-modal late-modal" role="dialog" aria-modal="true" aria-labelledby="lateTitle" tabindex="-1">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">✕</button>
+      <div class="story-orb" aria-hidden="true"><span>✧</span></div>
+      <p class="story-label">ÆON · LUZ TARDIA</p>
+      <h2 id="lateTitle">A beleza do que passou</h2>
+      <p class="story-primary">“Há uma beleza agridoce em receber a luz de algo tão distante. Ela nos alcança no presente, embora tenha partido no passado.”</p>
+      <div class="story-divider"></div>
+      <p class="story-secondary">“Talvez algumas lembranças sejam assim: trazem a alegria de terem existido e a saudade de um tempo ao qual já não pertencemos.”</p>
+      <p class="story-tail">A luz continua sua viagem.</p>
+    </section>
+  </div>
+
+  <div id="starModal" class="modal-backdrop" hidden>
+    <section class="story-modal star-modal" role="dialog" aria-modal="true" aria-labelledby="starTitle" tabindex="-1">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">✕</button>
+      <div class="story-orb" aria-hidden="true"><span>✦</span></div>
+      <p class="story-label">ÆON · UMA CONSTANTE NO INFINITO</p>
+      <h2 id="starTitle">Para sempre</h2>
+      <p class="story-primary">“O universo não conhece a permanência. Até as estrelas têm seu tempo. Mas a luz que um dia existiu pode atravessar eras inteiras, muito além de sua origem.”</p>
+      <div class="story-divider"></div>
+      <p class="story-secondary">“Talvez o infinito não seja aquilo que nunca termina, mas aquilo que continua encontrando formas de existir.”</p>
+    </section>
+  </div>
+
+  <div id="helpModal" class="modal-backdrop" hidden>
+    <section class="help-modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" tabindex="-1">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">✕</button>
+      <p class="story-label">UM POUCO SOBRE O ÆON</p>
+      <h2 id="helpTitle">Entre o tempo e a luz</h2>
+      <p>Explore as seis eras arrastando o tempo ou usando os botões de navegação. Arraste o céu para deslocar a câmera, use a roda do mouse ou gesto de pinça para aproximar e escolha os controles próprios de cada era.</p>
+      <p>As cenas são interpretações visuais e didáticas da evolução cósmica. A cronologia é aproximada, os efeitos não têm escala física e os futuros são hipóteses.</p>
+      <div class="help-settings"><label for="qualitySelect">Qualidade visual</label><select id="qualitySelect"><option value="auto">Automática</option><option value="high">Alta</option><option value="medium">Média</option><option value="eco">Econômica</option></select></div>
+      <div class="help-settings"><label for="reducedMotion">Reduzir animações</label><input type="checkbox" id="reducedMotion"></div>
+      <p class="help-heading">REFERÊNCIAS CIENTÍFICAS</p>
+      <ul id="referenceLinks" class="reference-links"></ul>
+      <div class="help-credits"><span>Designed &amp; Developed by Luana Figueiredo</span><a href="mailto:luanafigueiredo.dev@gmail.com">luanafigueiredo.dev@gmail.com</a><a href="https://github.com/luanafigdev" target="_blank" rel="noopener noreferrer">github.com/luanafigdev</a></div>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

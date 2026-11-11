@@ -1,0 +1,21 @@
+.aeon-main-link{color:#dac8f5!important;display:inline-flex;align-items:center;gap:5px;border:1px solid rgba(190,156,246,.14);font-weight:700}
+.aeon-main-link span:first-child{font-size:12px;color:#d7c5fb}.aeon-main-link:hover{border-color:rgba(213,190,255,.55)}
+.aeon-mobile-link{display:flex!important;align-items:center;gap:12px;color:#e8dbfa!important}.aeon-mobile-link span:first-child{color:#d2bafc;font-size:15px}
+.aeon-hero-link{display:inline-flex;gap:8px;align-items:center;color:#d4bcff!important;font-size:11px;font-weight:800;white-space:nowrap;padding:10px 0}.aeon-hero-link:hover{color:white!important}
+.aeon-orbit-portal{position:relative;isolation:isolate;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;min-height:410px;margin-top:8px;margin-bottom:90px;overflow:hidden;border:1px solid rgba(180,158,239,.31);border-radius:23px;background:radial-gradient(ellipse at 73% 45%,rgba(106,83,161,.26),transparent 52%),linear-gradient(110deg,#080b1e,#11152b 62%,#080d1c)}
+.aeon-orbit-portal::before{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(#c9c4e6 .7px,transparent .8px);background-size:35px 35px;opacity:.19;pointer-events:none}
+.aeon-orbit-content{position:relative;z-index:3;padding:45px clamp(23px,5vw,70px)}
+.aeon-orbit-eyebrow{font-size:10px;letter-spacing:.17em;color:#c7b5e7;font-weight:800}.aeon-orbit-eyebrow span{margin:0 6px}
+.aeon-orbit-content h2{font:500 clamp(74px,10vw,125px)/.95 'Space Grotesk',sans-serif;letter-spacing:-.115em;margin:23px 0 12px;color:#f1eaff}.aeon-orbit-content h2 span{color:#cbb3ff}
+.aeon-orbit-subtitle{font:italic clamp(22px,2.6vw,32px)/1.2 Georgia,serif;color:#e2d3f2}.aeon-orbit-description{font-size:13px;line-height:1.8;max-width:450px;color:#acb3ce;margin-top:14px}
+.aeon-orbit-button{display:inline-flex;align-items:center;gap:24px;min-height:44px;margin-top:17px;padding:0 19px;border-radius:10px;font-size:11px;font-weight:800;background:linear-gradient(115deg,#9f80dd,#60458f);border:1px solid #ba9cf6;color:white}.aeon-orbit-button:hover{background:#aa8ae3}
+.aeon-orbit-art{position:relative;min-height:405px;overflow:hidden;display:grid;place-items:center}
+.aeon-orbit-halo{position:absolute;width:410px;height:410px;max-width:95%;border-radius:50%;background:radial-gradient(circle,rgba(241,211,245,.34),rgba(141,95,195,.18) 19%,rgba(48,36,111,.12) 43%,transparent 69%);animation:aeon-halo-drift 12s ease-in-out infinite}
+.aeon-orbit-spiral{position:absolute;width:460px;height:160px;max-width:110%;border:1px solid rgba(220,185,255,.29);border-radius:50%;transform:rotate(-29deg);box-shadow:0 0 26px rgba(155,116,223,.09);animation:aeon-rotate 35s linear infinite}
+.aeon-orbit-spiral-two{width:390px;height:115px;opacity:.62;transform:rotate(24deg);animation-duration:44s;animation-direction:reverse}
+.aeon-orbit-core{width:124px;height:124px;border-radius:50%;background:radial-gradient(circle at 39% 35%,#fff5ed 0%,#e2c2e8 13%,#9b79c8 38%,#38306e 68%,rgba(24,24,63,.1) 85%);box-shadow:0 0 30px rgba(187,132,239,.35),0 0 100px rgba(138,103,206,.34);animation:aeon-halo-drift 9s ease-in-out infinite}
+.aeon-orbit-star{position:absolute;color:#fbf2ff;top:24%;right:16%;font-size:22px;text-shadow:0 0 20px #d8b3ff;animation:aeon-halo-drift 7s ease-in-out infinite}.aeon-orbit-index{position:absolute;bottom:19px;right:26px;font:400 35px Georgia,serif;color:#dccbf3}.aeon-orbit-index small{display:block;font:800 8px 'DM Sans',sans-serif;letter-spacing:.18em;color:#9e9fbd}
+@keyframes aeon-halo-drift{50%{transform:translateY(-9px) scale(1.03)}}@keyframes aeon-rotate{to{transform:rotate(331deg)}}
+@media(max-width:900px){.aeon-orbit-portal{grid-template-columns:1fr}.aeon-orbit-art{min-height:275px;margin-top:-15px}.aeon-orbit-content{padding:39px 28px 12px}.aeon-orbit-spiral{width:370px;height:120px}.aeon-orbit-halo{height:315px;width:315px}}
+@media(max-width:500px){.aeon-orbit-portal{border-radius:18px;margin-bottom:55px}.aeon-orbit-content{padding:30px 21px 4px}.aeon-orbit-content h2{font-size:84px}.aeon-orbit-description{font-size:12px}.aeon-orbit-eyebrow{font-size:8px}.aeon-orbit-art{min-height:240px}.aeon-orbit-core{width:98px;height:98px}}
+@media(prefers-reduced-motion:reduce){.aeon-orbit-halo,.aeon-orbit-spiral,.aeon-orbit-core,.aeon-orbit-star{animation:none}}

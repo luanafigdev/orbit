@@ -1,5 +1,5 @@
 (() => {
-  const DESTINATION = '/alunar/';
+  const DESTINATION = 'alunar/';
   const moonIcon = '<span aria-hidden="true">☾</span>';
   let scheduled = false;
 
@@ -57,7 +57,7 @@
       </div>
       <div class="alunar-teaser-visual" aria-hidden="true">
         <div class="alunar-teaser-halo"></div>
-        <img src="/alunar/assets/hero-moon.webp" alt="" loading="lazy" width="510" height="510">
+        <img src="alunar/assets/hero-moon.webp" alt="" loading="lazy" width="510" height="510">
         <span class="alunar-teaser-orbit"></span>
         <span class="alunar-teaser-symbol">✦</span>
       </div>`;

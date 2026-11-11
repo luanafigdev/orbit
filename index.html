@@ -26,5 +26,29 @@
   <script src="js/app.js" defer></script>
   <script src="alunar/orbit-link.js" defer></script>
   <script src="noctis/orbit-link.js" defer></script>
+  <script src="aeon/orbit-link.js" defer></script>
+
+  <script>
+    if (location.protocol === 'file:') {
+      document.addEventListener('DOMContentLoaded', () => {
+        const notice = document.createElement('aside');
+        notice.id = 'orbit-local-notice';
+        notice.setAttribute('role', 'alert');
+        notice.tabIndex = -1;
+        notice.innerHTML = '<strong>Abra o ORBIT pelo servidor local</strong><span>Para acessar ÆON, ALUNAR e NOCTIS, execute <b>ABRIR_ORBIT.bat</b> na pasta do projeto. A página será aberta automaticamente.</span>';
+        notice.style.cssText = 'position:fixed;z-index:9999;top:90px;left:50%;transform:translateX(-50%);width:min(92vw,620px);padding:17px 22px;border:1px solid #bba5f2;border-radius:15px;background:#181632;color:#fff;box-shadow:0 18px 70px #0009;font:14px/1.6 Arial,sans-serif;display:grid;gap:5px;text-align:center;';
+        document.body.append(notice);
+        document.addEventListener('click', event => {
+          const link = event.target.closest('a[href]');
+          if (!link) return;
+          const path = link.getAttribute('href');
+          if (/^(?:\.\/)?(?:aeon|alunar|noctis)\//i.test(path)) {
+            event.preventDefault();
+            notice.focus();
+          }
+        }, true);
+      });
+    }
+  </script>
 </body>
 </html>
